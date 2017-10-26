@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.secondLifeMarket.general.admin.dao.PersonDao">
+	<resultMap type="com.secondLifeMarket.general.admin.model.GoodsInfo" id="GoodsInfoMap">
+		<id property="id" column="id"/>
+		<result property="goodsName" column="goods_name"/>
+		<result property="goodsAttribute" column="goods_attribute"/>
+		<result property="goodsPrice" column="goods_price"/>
+		<result property="goodsOwner" column="goods_owner"/>
+		<result property="goodsOwnerConnectWay" column="goods_owner_connect_way"/>
+		<result property="goodsImageName" column="goods_image_name"/>
+		<result property="goodsArea" column="goods_area"/>
+		<result property="goodsAddDate" column="goods_add_date"/>
+		<result property="imageByte" column="image_byte"/>
+	</resultMap>
+	
+	<sql id="base_column">
+	g.id,g.goods_name,g.goods_attribute,g.goods_price,g.goods_owner,g.goods_owner_connect_way,g.goods_image_name,g.goods_area,
+	g.goods_add_date,i.image_byte
+	</sql>
+	
+	<select id="findPersonalGoodsInfos" 
+	    parameterType="com.secondLifeMarket.general.admin.webapp.controller.personal.searcher.PersonSearcher" resultMap="GoodsInfoMap">
+	 select *
+	 from goods_info 
+	 where 1=1 and goods_owner=#{userName}
+	  <if test="startDate">
+		  <![CDATA[ 
+		 and goods_add_date > #{startDate}
+		  ]]>
+	 </if>
+	 <if test="endDate">
+		 <![CDATA[ 
+		 and goods_add_date <= #{endDate} 
+		   ]]>
+	 </if>
+	 
+	</select>
+	
+	</mapper>
+	

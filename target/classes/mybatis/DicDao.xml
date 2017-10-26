@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.secondLifeMarket.general.admin.dao.DicDao">
+	<resultMap type="com.secondLifeMarket.general.admin.model.DicInfo" id="DicInfoMap">
+		<id property="id" column="id"/>
+		<result property="name" column="dic_name"/>
+		<result property="code" column="dic_value"/>
+	</resultMap>
+	
+	<select id="queryDicValueByName" parameterType="String" resultMap="DicInfoMap">
+	 	select dic_value from data_dictionary where dic_name = #{name}
+	</select>
+	
+</mapper>

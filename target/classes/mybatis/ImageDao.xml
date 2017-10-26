@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.secondLifeMarket.general.admin.dao.ImageDao">
+	<resultMap type="com.secondLifeMarket.general.admin.model.ImageInfo" id="ImageInfoMap">
+		<id property="id" column="id"/>
+		<result property="imageName" column="image_name"/>
+		<result property="imageByte" column="image_byte"/>
+	</resultMap>
+	
+	<select id="findImageByName" parameterType="String" resultMap="ImageInfoMap">
+	select image_name,image_byte
+    from image_info 
+	where image_name = #{name}
+	</select>
+	
+	<insert id="insertImages" parameterType="com.secondLifeMarket.general.admin.model.ImageInfo">
+	 insert into image_info(image_name,image_byte)value(#{imageName},#{imageByte})
+	</insert>
+	
+</mapper>
