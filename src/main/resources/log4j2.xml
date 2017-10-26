@@ -19,7 +19,8 @@
             </Policies>  
             <DefaultRolloverStrategy max="20"/>  
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-        </RollingRandomAccessFile>  
+        </RollingRandomAccessFile> 
+         
         <RollingRandomAccessFile name="secondlifeMarket_log_common" 
                                  fileName="${sys:catalina.base}/logs/frame_log_common.log"  
                                  filePattern="${sys:catalina.base}/logs/frame_log_common%d{yyyy-MM-dd}.log">  
@@ -37,19 +38,10 @@
   
     <Loggers>  
         <!-- 3rdparty Loggers -->  
-        <logger name="org.springframework.core" level="info">  
-        </logger>  
-        <logger name="org.springframework.beans" level="info">  
-        </logger>  
-        <logger name="org.springframework.context" level="info">  
-        </logger>  
-        <logger name="org.springframework.web" level="info">  
-        </logger>  
-  
-     <!--    <logger name="com.meituan.gct.shop.promo" level="error" includeLocation="true" additivity="false">  
-            <appender-ref ref="ErrorLog"/>  
-            <appender-ref ref="Console"/>  
-        </logger>   -->
+        <logger name="org.springframework.core" level="info"> </logger>  
+        <logger name="org.springframework.beans" level="info"> </logger>  
+        <logger name="org.springframework.context" level="info"> </logger>  
+        <logger name="org.springframework.web" level="info"> </logger>  
   
         <root level="DEBUG" includeLocation="true">  
             <appender-ref ref="console" />  
