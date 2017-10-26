@@ -8,7 +8,7 @@
 	<groupId>com.secondLifeMarket</groupId>
 	<artifactId>secondLifeMarket-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>war</packaging>     
 
 	<build>
 		<plugins>
