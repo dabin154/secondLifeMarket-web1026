@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.secondLifeMarket.general.admin.dao.UersBrowseRecordDao">
+	<resultMap type="com.secondLifeMarket.general.admin.model.UserBrowseRecordModel" id="UserBrowseRecordMap">
+	  <id property="id" column="id"/>
+	  <result property="userName" column="user_name" />
+	  <result property="passWd" column="pass_wd" />
+	  <result property="goodsId" column="goods_id" />
+	   <result property="goodsName" column="goods_name" />
+	   <result property="goodsAttribute" column="goods_attribute" />
+	   <result property="goodsPrice" column="goods_price" />
+	   <result property="goodsOwner" column="goods_owner" />
+	   <result property="connectWay" column="connect_way" />
+	   <result property="browerDate" column="brower_date"/>
+	</resultMap>
+	
+	<select id="">
+	
+	</select>
+	
+	<insert id="addUserBrowseRecod" parameterType="com.secondLifeMarket.general.admin.model.UserBrowseRecordModel">
+		insert into user_browse_record(
+		user_name,
+		pass_wd,
+		goods_id,
+		goods_name,
+		goods_attribute,
+		goods_price,
+		goods_owner,
+		connect_way,
+		brower_date
+		)values(
+		#{userName},
+		#{passWd},
+		#{goodsId},
+		#{goodsName},
+		#{goodsAttribute},
+		#{goodsPrice},
+		#{goodsOwner},
+		#{connectWay},
+		#{browerDate}
+		);
+	</insert>
+
+</mapper>
