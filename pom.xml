@@ -23,8 +23,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -245,10 +245,10 @@
 	   <dependency><!-- JAVA EE API -->
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
+			<version>8.0</version>
 		</dependency>
-		
-		<dependency>
+	<!-- 二维码相关依赖 -->
+	<dependency>
 	  <groupId>com.google.zxing</groupId>
 	  <artifactId>core</artifactId>
 	  <version>3.0.0</version>
