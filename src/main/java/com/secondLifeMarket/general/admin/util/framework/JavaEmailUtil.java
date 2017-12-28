@@ -12,12 +12,22 @@ import javax.mail.internet.MimeMessage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.secondLifeMarket.general.admin.webapp.controller.login.LoginController;
-
 public class JavaEmailUtil {
 	
 	private static final Log logger = LogFactory.getLog(JavaEmailUtil.class);
 
+	/**
+	 * 
+	 * 
+	 * @param mailHost：指定邮件的传输协议，smtp
+	 * @param to ：目标邮箱
+	 * @param from：发送邮箱
+	 * @param userId：用户名
+	 * @param password：密码
+	 * @param subject：邮件主题
+	 * @param content：邮件内容
+	 * @return
+	 */
     public String send(String mailHost, String to, String from, String userId, String password,
                        String subject, String content) {
 
@@ -45,7 +55,7 @@ public class JavaEmailUtil {
             MimeMessage message = new MimeMessage(session);
             String nick = "";
             try {
-                nick = javax.mail.internet.MimeUtility.encodeText("secondlife");
+                nick = javax.mail.internet.MimeUtility.encodeText("仁聚汇通");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
