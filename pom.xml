@@ -131,7 +131,7 @@
 		<!-- begin spring -->
 
 		<!-- begin test -->
-		<!-- <dependency>
+		 <dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
@@ -157,7 +157,7 @@
 			<artifactId>jsp-2.1-jetty</artifactId>
 			<scope>test</scope>
 			<version>6.1.25</version>
-		</dependency> -->
+		</dependency> 
 		<!-- end test -->
 		
 		<dependency>
