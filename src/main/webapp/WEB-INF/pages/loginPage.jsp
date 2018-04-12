@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%@ page language="java" isErrorPage="true" pageEncoding="UTF-8"contentType="text/html;charset=utf-8"%>
+<%@ page language="java" isErrorPage="true" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
  <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -23,8 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	margin: 0px;
 	width: 100%;
 	height: 100%;
-}
-;
+};
 .btn btn-default {
 	width: 80px;
 	height: 15px;
@@ -33,8 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 };
 .btn btn-default:hover {
 	background: #FF0000;
-}
-;
+};
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>

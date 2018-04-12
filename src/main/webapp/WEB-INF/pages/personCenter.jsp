@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%@ page language="java" isErrorPage="true" pageEncoding="UTF-8"contentType="text/html;charset=utf-8"%>
+<%@ page language="java" isErrorPage="true" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
  <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -55,7 +55,7 @@
                         <div class="form-group">
                                 <label for="gender" class="col-sm-2 control-label">姓别:</label>
                                 <div class="col-sm-10">
-                                 <form:select class="form-control" path="gender" id="gender"maxlength="2">
+                                 <form:select class="form-control" path="gender" id="gender" maxlength="2">
 									<option value="1" label="男"
 										<c:if test="${userInfoUser.gender==1}">selected</c:if>>男</option>
 									<option value="0" label="女"
