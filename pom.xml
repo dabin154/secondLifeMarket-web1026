@@ -14,9 +14,9 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
+				<!--<configuration>
 					<version>2.5</version>
-				</configuration>
+				</configuration>-->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

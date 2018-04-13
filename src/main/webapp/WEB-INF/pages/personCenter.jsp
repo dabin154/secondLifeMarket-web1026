@@ -36,7 +36,7 @@
                         <div class="form-horizontal" role="form">
                         
                            <div class="form-group">
-                             <label for="name" class="col-sm-2 control-label">昵称:</label>
+                             <label for="userName" class="col-sm-2 control-label">昵称:</label>
                              <div class="col-sm-10">
                              
                              <form:input cssClass="form-control" path="userName" id="userName"
@@ -45,7 +45,7 @@
                          </div>
                         
                          <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">姓名:</label>
+                                <label for="realName" class="col-sm-2 control-label">姓名:</label>
                                 <div class="col-sm-10">
                                  <form:input cssClass="form-control" path="realName" id="realName"
 											maxlength="32"/>
