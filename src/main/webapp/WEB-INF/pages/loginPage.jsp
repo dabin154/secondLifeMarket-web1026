@@ -23,16 +23,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	margin: 0px;
 	width: 100%;
 	height: 100%;
-};
+}
 .btn btn-default {
 	width: 80px;
 	height: 15px;
 	background: #00EE00;
 	border-radius: 10px;
-};
+}
 .btn btn-default:hover {
 	background: #FF0000;
-};
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
@@ -48,11 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="iconsm iconsm-warning"></span><span id="errorMsg" style="color: red"></span>
                 </div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">用户名:</label>
+					<label id="exampleInputEmail1">用户名:</label>
 					<form:input path="userName" type="text" cssClass="form-control"  placeholder="请输入您的用户名"/>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">密码:</label>
+					<label id="exampleInputPassword1">密码:</label>
 					<form:input path="password" type="password" cssClass="form-control"  placeholder="请输入您的密码"/>
 				</div>
 				
