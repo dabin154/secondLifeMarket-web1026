@@ -63,8 +63,6 @@ public class PersonalController {
 	@RequestMapping(value="/modifPerson",method={RequestMethod.POST,RequestMethod.GET})
 	public Object modifPersonInfo(@ModelAttribute("userInfoUser")User userInfoUser){
 		int flag = loginManager.updateUser(userInfoUser);
-		if(flag==1){
-		}
 		return "redirect:/personCenter";
 	}
 	@RequestMapping("/deletePersonalGoods")
