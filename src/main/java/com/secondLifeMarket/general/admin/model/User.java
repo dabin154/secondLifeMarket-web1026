@@ -11,6 +11,11 @@ public class User {
 	private String phone;
 	private String userName;
 	private String passWd;
+	/**
+	 * 0:锁定
+	 * 1：未锁定
+	 */
+	private String locked;
 	public String getId() {
 		return id;
 	}
@@ -66,6 +71,12 @@ public class User {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
 
+	public String getLocked() {
+		return locked;
+	}
+
+	public void setLocked(String locked) {
+		this.locked = locked;
+	}
 }
