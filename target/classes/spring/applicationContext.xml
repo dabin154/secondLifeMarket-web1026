@@ -19,5 +19,7 @@
 	<import resource="applicationContext-mybatis.xml"/>
 	
 	<import resource="applicationContext-service.xml"/>
+
+	<import resource="classpath:spring-shiro-web.xml"/>
 	
 </beans>
