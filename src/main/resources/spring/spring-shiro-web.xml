@@ -13,7 +13,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
         <!--登录页的url -->
-        <property name="loginUrl" value="/WEB-INF/pages/loginPage.jsp" />
+        <property name="loginUrl" value="/" />
         <!--未认证的跳转页面 -->
         <property name="unauthorizedUrl" value="/WEB-INF/pages/403.jsp" />
         <!--过滤器链authc:指的是该路径下只有经过认证才能访问该路径
