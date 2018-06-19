@@ -7,7 +7,7 @@
 	<context-param>	
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-            classpath:/spring/applicationContext.xml,classpath:spring-shiro-web.xml
+            classpath:/spring/applicationContext.xml
         </param-value>
 	</context-param>
 	<context-param>
@@ -65,7 +65,8 @@
 		<welcome-file>/WEB-INF/pages/mainhandle.jsp</welcome-file>
 	</welcome-file-list>
 
-	<!-- shiro配置 开始 -->
+	<!-- shiro配置 开始
+	DelegatingFilterProxy：将shiro的拦截器交给spring容器来管理-->
 	<filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
