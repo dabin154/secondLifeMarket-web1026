@@ -25,6 +25,7 @@
             <value>
                 /login = anon
                 /registerPage = anon
+                /registerUser = anon
                 /checklogin = anon
                 /* = roles["admin","superadmin"]
                 /delete = perms["user:delete","user:select"]
@@ -33,7 +34,7 @@
         </property>
     </bean>
 
-    <!-- Realm实现-->
+    <!-- 自定义Realm实现-->
     <bean id="userRealm" class="com.secondLifeMarket.general.admin.utils.UserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher" />
     </bean>
@@ -54,7 +55,7 @@
         <!-- 加密算法-->
         <property name="hashAlgorithmName" value="md5" />
         <!-- 加密次数  -->
-        <property name="hashIterations" value="2" />
+        <property name="hashIterations" value="1" />
         <property name="storedCredentialsHexEncoded" value="true" />
     </bean>
 

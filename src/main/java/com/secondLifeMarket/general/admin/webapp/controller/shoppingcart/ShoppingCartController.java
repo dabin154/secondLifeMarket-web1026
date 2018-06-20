@@ -25,7 +25,7 @@ public class ShoppingCartController {
 	@Autowired
 	private ShoppingCartManager ShoppingCartManager;
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping(value="/shoppingCartList",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView ShoppingCartList(@ModelAttribute("shoppingCartSearcher")ShoppingCartSearcher shoppingCartSearcher){
 		ModelAndView modelAndView = new ModelAndView();
@@ -37,7 +37,7 @@ public class ShoppingCartController {
 		return modelAndView.addObject("pageObj",pageObj);
 	}
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping("/addShoppingCart")
 	public Object addShoppingCart(String id){
 		GoodsInfo info=goodsManager.getGoodsDetailById(id);
@@ -57,7 +57,7 @@ public class ShoppingCartController {
 		return "redirect:/goodsList";
 	}
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping("/delete")
 	public Object deleteShoppingCart(String id){
 		

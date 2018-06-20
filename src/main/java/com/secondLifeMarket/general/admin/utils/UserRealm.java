@@ -8,14 +8,17 @@ import com.secondLifeMarket.general.admin.model.UserRoleInfo;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 自定义Realm
  * @Author: XiaXB
  * @Description:
  * @Date: Created in 16:00 2018/5/8
@@ -23,6 +26,8 @@ import java.util.Set;
  */
 public class UserRealm extends AuthorizingRealm {
     // 用户对应的角色信息与权限信息都保存在数据库中，通过UserService获取数据
+
+    @Resource
     private UserServiceImpl userService;
 
     /**
@@ -68,6 +73,13 @@ public class UserRealm extends AuthorizingRealm {
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(),
                 user.getPassWd(), getName());
+        authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(username)); // 加盐值
         return authenticationInfo;
+    }
+
+    public static void main(String[] args) {
+        Md5Hash md5Hash = new Md5Hash("412592", "jack");
+        System.out.println(md5Hash.toString());
+        System.out.println(md5Hash);
     }
 }

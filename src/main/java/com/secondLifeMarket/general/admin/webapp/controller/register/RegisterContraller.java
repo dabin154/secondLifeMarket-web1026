@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,7 +40,8 @@ public class RegisterContraller {
 	
 	@RequestMapping("/registerUser")
 	public Object registerUser(@ModelAttribute("user")User user){
-		user.setPassWd(EncriptUtil.encriptSHA1(user.getPassWd()));
+		Md5Hash md5Hash = new Md5Hash(user.getPassWd(), user.getUserName());
+		user.setPassWd(md5Hash.toString());
 		RegisterManager.addUser(user);
 		return "redirect:/login";
 	}

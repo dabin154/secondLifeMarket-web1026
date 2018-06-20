@@ -50,7 +50,7 @@ public class GoodsController {
 				           .addObject("goodsAttrList",goodsAttrList);
 	}
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping(value="/manage",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView goodsAdd(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -67,14 +67,14 @@ public class GoodsController {
 		        .addObject("goodsAttrList",goodsAttrList);
 	}
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping(value="/goodsAdd",method = {RequestMethod.GET,RequestMethod.POST})
 	public Object goodsSave(@ModelAttribute("goodsInfo")GoodsInfo goodsInfo){
 		goodsManager.goodsAdd(goodsInfo);
 		return "redirect:/goodsList";
 	}
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping("/goodsDetail")
 	public Object goodsDetail(String id){
 		ModelAndView model = new ModelAndView();

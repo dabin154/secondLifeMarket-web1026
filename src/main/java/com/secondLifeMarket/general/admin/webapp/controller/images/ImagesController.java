@@ -22,7 +22,7 @@ public class ImagesController {
 
 
 
-	@RequiresRoles("admin,superadmin,buyer")
+	@RequiresRoles("buyer")
 	@RequestMapping("/uploadImage")
 	@ResponseBody
 	public Object upload(MultipartFile img) throws IOException{
