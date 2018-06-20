@@ -3,6 +3,7 @@ package com.secondLifeMarket.general.admin.manage;
 import com.secondLifeMarket.general.admin.model.Permission;
 import com.secondLifeMarket.general.admin.model.Role;
 import com.secondLifeMarket.general.admin.model.User;
+import com.secondLifeMarket.general.admin.model.UserRoleInfo;
 
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import java.util.Set;
  */
 public interface UserService {
 
-    Set<Role> findRolesByUserName(String userName);
+    Set<UserRoleInfo> findRolesByUserName(String userName);
 
     Set<Permission> findPermissions(String userName);
 

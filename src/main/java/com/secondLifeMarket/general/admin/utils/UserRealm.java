@@ -4,6 +4,7 @@ import com.secondLifeMarket.general.admin.manage.impl.UserServiceImpl;
 import com.secondLifeMarket.general.admin.model.Permission;
 import com.secondLifeMarket.general.admin.model.Role;
 import com.secondLifeMarket.general.admin.model.User;
+import com.secondLifeMarket.general.admin.model.UserRoleInfo;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -32,10 +33,10 @@ public class UserRealm extends AuthorizingRealm {
         String username = (String) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         // 根据用户名查询当前用户拥有的角色
-        Set<Role> roles = userService.findRolesByUserName(username);
+        Set<UserRoleInfo> roles = userService.findRolesByUserName(username);
         Set<String> roleNames = new HashSet<String>();
-        for (Role role : roles) {
-            roleNames.add(role.getRole());
+        for (UserRoleInfo role : roles) {
+            roleNames.add(role.getRoleName());
         }
         // 将角色名称提供给info
         authorizationInfo.setRoles(roleNames);

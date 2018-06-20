@@ -18,4 +18,17 @@
 		where 
 		user_name = #{userName} and passwd = #{passWd}
 	</select>
+
+	<select id="selectUser" parameterType="String" resultMap="UserMap">
+		select * from user_info
+		where
+		user_name = #{userName}
+	</select>
+
+	<update id="updateUser" parameterType="com.secondLifeMarket.general.admin.model.User">
+
+
+	</update>
+
+
 </mapper>

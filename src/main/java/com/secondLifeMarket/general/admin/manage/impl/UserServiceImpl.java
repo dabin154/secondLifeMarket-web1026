@@ -1,11 +1,17 @@
 package com.secondLifeMarket.general.admin.manage.impl;
 
+import com.secondLifeMarket.general.admin.dao.LoginManageDao;
+import com.secondLifeMarket.general.admin.dao.UserRoleDao;
 import com.secondLifeMarket.general.admin.manage.UserService;
 import com.secondLifeMarket.general.admin.model.Permission;
 import com.secondLifeMarket.general.admin.model.Role;
 import com.secondLifeMarket.general.admin.model.User;
+import com.secondLifeMarket.general.admin.model.UserRoleInfo;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,9 +23,17 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
 
-    public Set<Role> findRolesByUserName(String userName){
+    @Resource
+    private LoginManageDao loginManageDao;
+    @Resource
+    private UserRoleDao userRoleDao;
 
-        return null;
+
+
+    public Set<UserRoleInfo> findRolesByUserName(String userName){
+        List<UserRoleInfo> listRoles = userRoleDao.getUserRolesByUserName(userName);
+        Set<UserRoleInfo> setRole = new HashSet<UserRoleInfo>(listRoles);
+        return setRole;
     }
 
     public Set<Permission> findPermissions(String userName){
@@ -29,6 +43,6 @@ public class UserServiceImpl implements UserService {
 
     public User findByUsername(String userName){
 
-        return null;
+        return loginManageDao.selectUser(userName);
     }
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,7 +32,8 @@ public class GoodsController {
 	private DicManager dicManager;
 	@Autowired
 	private UersBrowseRecordManager uersBrowseRecordManager;
-	
+
+
 	@RequestMapping(value="/goodsList",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView goodsList(@ModelAttribute("goodsSearcher")GoodsSearcher goodsSearcher){
 		ModelAndView modelAndView = new ModelAndView();
@@ -47,7 +49,8 @@ public class GoodsController {
 				           .addObject("areaList",areaList)
 				           .addObject("goodsAttrList",goodsAttrList);
 	}
-	
+
+	@RequiresRoles("admin,superadmin,buyer")
 	@RequestMapping(value="/manage",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView goodsAdd(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -63,13 +66,15 @@ public class GoodsController {
 				.addObject("areaList",areaList)
 		        .addObject("goodsAttrList",goodsAttrList);
 	}
-	
+
+	@RequiresRoles("admin,superadmin,buyer")
 	@RequestMapping(value="/goodsAdd",method = {RequestMethod.GET,RequestMethod.POST})
 	public Object goodsSave(@ModelAttribute("goodsInfo")GoodsInfo goodsInfo){
 		goodsManager.goodsAdd(goodsInfo);
 		return "redirect:/goodsList";
 	}
-	
+
+	@RequiresRoles("admin,superadmin,buyer")
 	@RequestMapping("/goodsDetail")
 	public Object goodsDetail(String id){
 		ModelAndView model = new ModelAndView();
