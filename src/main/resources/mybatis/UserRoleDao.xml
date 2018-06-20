@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.secondLifeMarket.general.admin.dao.UserRoleDao">
+    <resultMap id="UserRoleInfoMap" type="com.secondLifeMarket.general.admin.model.UserRoleInfo">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="roleName" column="role_name"/>
+
+    </resultMap>
+
+    <select id="getUserRolesByUserName" parameterType="String" resultMap="UserRoleInfoMap">
+
+        select id,user_name,role_name from user_role where user_name = #{userName}
+
+    </select>
+
+    <insert id="addUserRole" parameterType="com.secondLifeMarket.general.admin.model.UserRoleInfo">
+
+        insert into user_role(user_name,role_name) VALUES (#{userName},#{roleName})
+
+    </insert>
+
+
+</mapper>
