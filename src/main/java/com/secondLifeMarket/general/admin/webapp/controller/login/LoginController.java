@@ -37,7 +37,7 @@ public class LoginController{
 	public Object checkLogin(@ModelAttribute("loginSearcher")LoginSearcher loginSearcher){
 		logger.info("用户登陆参数{}", JSON.toJSONString(loginSearcher));
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("modelAndView");
+		modelAndView.setViewName("mainhandle");
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(loginSearcher.getUserName(),loginSearcher.getPassword());
 		try{
