@@ -16,18 +16,20 @@
         <property name="loginUrl" value="/" />
         <!--未认证的跳转页面 -->
         <property name="unauthorizedUrl" value="/WEB-INF/pages/403.jsp" />
-        <!--过滤器链authc:指的是该路径下只有经过认证才能访问该路径
+        <!--过滤器连是有顺序的，从下往上匹配，匹配到之后返回、
+                    authc:指的是该路径下只有经过认证才能访问该路径
                     anon:值不经过认证可以访问该路径
-                    过滤器连是有顺序的，从下往上匹配，匹配到之后返回、
                     “同时具备admin和superadmin角色的用户可以访问所有权限”
                     /delete路径只有同时具备user：delete和user：select权限的用户才可访问-->
         <property name="filterChainDefinitions">
             <value>
-                /login = anon
                 /registerPage = anon
+                /login = anon
                 /registerUser = anon
                 /checklogin = anon
+                /personCenter = anon
                 /* = roles["admin","superadmin"]
+                /personCenter = roles["buyer"]
                 /delete = perms["user:delete","user:select"]
                 /* = authc
             </value>

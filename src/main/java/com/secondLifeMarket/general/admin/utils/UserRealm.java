@@ -48,11 +48,13 @@ public class UserRealm extends AuthorizingRealm {
         // 根据用户名查询当前用户权限
         Set<Permission> permissions = userService.findPermissions(username);
         Set<String> permissionNames = new HashSet<String>();
-        for (Permission permission : permissions) {
-            permissionNames.add(permission.getPermission());
+        if(permissions != null){
+            for (Permission permission : permissions) {
+                permissionNames.add(permission.getPermission());
+            }
+            // 将权限名称提供给info
+            authorizationInfo.setStringPermissions(permissionNames);
         }
-        // 将权限名称提供给info
-        authorizationInfo.setStringPermissions(permissionNames);
         return authorizationInfo;
     }
 

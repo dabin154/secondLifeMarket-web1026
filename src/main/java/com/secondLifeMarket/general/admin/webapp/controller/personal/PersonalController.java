@@ -31,7 +31,6 @@ public class PersonalController {
 	private UersBrowseRecordManager uersBrowseRecordManager;
 	
 	//个人信息中心
-	@RequiresRoles("buyer")
 	@RequestMapping(value="/personCenter",method={RequestMethod.POST,RequestMethod.GET})
 	public Object personPage(){
 		ModelAndView modelAndView  = new ModelAndView();
