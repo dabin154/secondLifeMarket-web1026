@@ -1,11 +1,15 @@
 package com.secondLifeMarket.general.admin.webapp.controller.login;
 
 import com.alibaba.fastjson.JSON;
+import com.secondLifeMarket.general.admin.contents.UserAuthoritySubject;
+import com.secondLifeMarket.general.admin.model.User;
+import com.secondLifeMarket.general.admin.util.framework.EncriptUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,9 +42,15 @@ public class LoginController{
 		logger.info("用户登陆参数{}", JSON.toJSONString(loginSearcher));
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("mainhandle");
+
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(loginSearcher.getUserName(),loginSearcher.getPassword());
 		try{
+			User user = new User();
+			user.setUserName(loginSearcher.getUserName());
+            Md5Hash md5Hash = new Md5Hash(loginSearcher.getPassword(),loginSearcher.getUserName());
+			user.setPassWd(md5Hash.toString());
+			UserAuthoritySubject.setAccountSubject(user);
 			subject.login(usernamePasswordToken);
 		}catch (AuthenticationException e){
 			modelAndView.setViewName("loginPage");

@@ -31,6 +31,7 @@ public class PersonalController {
 	private UersBrowseRecordManager uersBrowseRecordManager;
 	
 	//个人信息中心
+	@RequiresRoles("admin")
 	@RequestMapping(value="/personCenter",method={RequestMethod.POST,RequestMethod.GET})
 	public Object personPage(){
 		ModelAndView modelAndView  = new ModelAndView();
@@ -40,19 +41,16 @@ public class PersonalController {
 		modelAndView.setViewName("personCenter");
 		return modelAndView;
 	}
+
 	//浏览记录
-	@RequiresRoles("buyer")
 	@RequestMapping(value="/personPublish",method={RequestMethod.POST,RequestMethod.GET})
 	public Object personPublish(@ModelAttribute("userBrowseRecordSearcher")UserBrowseRecordSearcher userBrowseRecordSearcher){
 		ModelAndView modelAndView  = new ModelAndView();
 		User user=UserAuthoritySubject.getAccountSubject();//取Session中的User
-		
-		
 		modelAndView.setViewName("personPublish");
 		return modelAndView;
 	}
 	//发布记录
-	@RequiresRoles("buyer")
 	@RequestMapping(value="/personDeal",method={RequestMethod.POST,RequestMethod.GET})
 	public Object personDeal(@ModelAttribute("personSearcher")PersonSearcher personSearcher){
 		ModelAndView modelAndView  = new ModelAndView();
@@ -62,14 +60,13 @@ public class PersonalController {
 		modelAndView.setViewName("personDeal");
 		return modelAndView.addObject("pageObj",pageObj);
 	}
-	@RequiresRoles("buyer")
+
 	@RequestMapping(value="/modifPerson",method={RequestMethod.POST,RequestMethod.GET})
 	public Object modifPersonInfo(@ModelAttribute("userInfoUser")User userInfoUser){
 		int flag = loginManager.updateUser(userInfoUser);
 		return "redirect:/personCenter";
 	}
 
-	@RequiresRoles("buyer")
 	@RequestMapping("/deletePersonalGoods")
 	public Object deletePersonalGoods(String id){
 		goodsManager.deleteGoods(id);

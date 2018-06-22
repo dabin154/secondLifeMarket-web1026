@@ -49,10 +49,10 @@
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-   
-   <mvc:interceptors>  
-    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->  
+
+	<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求
+	<mvc:interceptors>
     	<bean class="com.secondLifeMarket.general.admin.util.framework.GeneralIntercepter"/>  
-	</mvc:interceptors>
+	</mvc:interceptors> -->
  
 </beans>

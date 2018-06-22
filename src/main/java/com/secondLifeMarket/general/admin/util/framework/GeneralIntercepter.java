@@ -28,13 +28,12 @@ public class GeneralIntercepter implements HandlerInterceptor {
 		String requestURI=request.getServletPath();
 		if (requestURI.startsWith("/resources/")) return true;//针对静态资源请求 CSS、JS、IMG
 		boolean flag=false;
-		if (!checkUser()&& !requestURI.contains("login")&&!requestURI.contains("register")
-				&&!requestURI.contains("goodsList")&&!requestURI.contains("checkcode")){                //放未登录可以进入页面。首页登录页。。。
+		checkUser();
+		if (!checkUser()&& !requestURI.contains("login")&&!requestURI.contains("register") &&!requestURI.contains("goodsList")&&!requestURI.contains("checkcode")){                //放未登录可以进入页面。首页登录页。。。
 			 if(request.getHeader("accept").matches(".*html.*")){
 				String urlToSave=requestURI;
 				if (request.getQueryString()!=null) 
 					urlToSave+="?"+request.getQueryString();
-				LOGGER.info("hahahaha");
 				request.getSession().setAttribute(REQUEST_URI_BEFORE_LOGIN_THREAD_KEY, urlToSave);
 				response.sendRedirect(request.getContextPath()+"/login");
 			}

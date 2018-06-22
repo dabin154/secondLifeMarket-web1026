@@ -13,9 +13,9 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
         <!--登录页的url -->
-        <property name="loginUrl" value="/" />
+        <property name="loginUrl" value="/returnFirst" />
         <!--未认证的跳转页面 -->
-        <property name="unauthorizedUrl" value="/WEB-INF/pages/403.jsp" />
+        <property name="unauthorizedUrl" value="/return403" />
         <!--过滤器连是有顺序的，从下往上匹配，匹配到之后返回、
                     authc:指的是该路径下只有经过认证才能访问该路径
                     anon:值不经过认证可以访问该路径
@@ -27,10 +27,6 @@
                 /login = anon
                 /registerUser = anon
                 /checklogin = anon
-                /personCenter = anon
-                /* = roles["admin","superadmin"]
-                /personCenter = roles["buyer"]
-                /delete = perms["user:delete","user:select"]
                 /* = authc
             </value>
         </property>
