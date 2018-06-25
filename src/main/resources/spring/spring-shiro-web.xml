@@ -11,10 +11,11 @@
 
 <!-- Shiro的Web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- Shiro的核心安全接口,这个属性是必须的 -->
         <property name="securityManager" ref="securityManager" />
-        <!--登录页的url -->
+        <!-- 身份认证失败，则跳转到登录页面的配置 -->
         <property name="loginUrl" value="/returnFirst" />
-        <!--未认证的跳转页面 -->
+        <!-- 权限认证失败，则跳转到指定页面 -->
         <property name="unauthorizedUrl" value="/return403" />
         <!--过滤器连是有顺序的，从下往上匹配，匹配到之后返回、
                     authc:指的是该路径下只有经过认证才能访问该路径
@@ -25,8 +26,8 @@
             <value>
                 /registerPage = anon
                 /login = anon
-                /registerUser = anon
                 /checklogin = anon
+                /personCenter = anon
                 /* = authc
             </value>
         </property>
@@ -42,6 +43,14 @@
         <property name="realm" ref="userRealm" />
     </bean>
 
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+    <!-- 开启Shiro注解 -->
+     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+           <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+         <property name="securityManager" ref="securityManager"/>
+     </bean>
+
     <!-- 缓存管理器 使用Ehcache实现 -->
     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
         <property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
@@ -56,7 +65,5 @@
         <property name="hashIterations" value="1" />
         <property name="storedCredentialsHexEncoded" value="true" />
     </bean>
-
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
 </beans>

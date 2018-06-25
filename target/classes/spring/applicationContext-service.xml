@@ -17,16 +17,13 @@
 						   http://www.springframework.org/schema/context/spring-context-4.3.xsd"
        default-lazy-init="true">
 
-      <aop:config>
-        <aop:advisor  advice-ref="txAdvice" pointcut="execution(* com.secondLifeMarket.general.admin.manage.*Manager.*(..))"/>
-      </aop:config>
-
       <!--启用对@AspectJ的支持 -->
       <aop:aspectj-autoproxy/>
 
         <!--开启事务管理的注解 -->
       <tx:annotation-driven/>
 
+     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
       <bean id="transactionManager" name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
             <property name="dataSource" ref="dataSource" />
       </bean>
@@ -36,4 +33,10 @@
                 <tx:method name="*"/>
             </tx:attributes>
         </tx:advice>
+
+    <!-- 配置事务切面 -->
+    <aop:config>
+        <aop:advisor  advice-ref="txAdvice" pointcut="execution(* com.secondLifeMarket.general.admin.manage.*Manager.*(..))"/>
+    </aop:config>
+
   </beans>   
