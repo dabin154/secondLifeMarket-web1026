@@ -3,14 +3,13 @@ package com.secondLifeMarket.general.admin.webapp.controller.login;
 import com.alibaba.fastjson.JSON;
 import com.secondLifeMarket.general.admin.contents.UserAuthoritySubject;
 import com.secondLifeMarket.general.admin.model.User;
-import com.secondLifeMarket.general.admin.util.framework.EncriptUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +24,7 @@ import com.secondLifeMarket.general.admin.webapp.controller.login.searcher.Login
 @Controller
 public class LoginController{
 	
-	private static final Logger logger = LogManager.getLogger(LoginController.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
 	private LoginManager loginManager;
