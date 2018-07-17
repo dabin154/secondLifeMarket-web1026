@@ -11,6 +11,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.Resource;
@@ -77,6 +78,39 @@ public class UserRealm extends AuthorizingRealm {
                 user.getPassWd(), getName());
         authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(username)); // 加盐值
         return authenticationInfo;
+    }
+
+    @Override
+    public void onLogout(PrincipalCollection principals) {
+        super.clearCachedAuthorizationInfo(principals);
+        User shiroUser = (User) principals.getPrimaryPrincipal();
+        removeUserCache(shiroUser);
+    }
+
+    /**
+     * 清除用户缓存
+     *
+     * @param shiroUser
+     */
+    public void removeUserCache(User shiroUser) {
+//        SimplePrincipalCollection principals = new SimplePrincipalCollection();
+//        principals.add(shiroUser, super.getName());
+//        super.clearCachedAuthorizationInfo(principals);
+//        super.clearCachedAuthenticationInfo(principals);
+
+        removeUserCache(shiroUser.getUserName());
+    }
+
+    /**
+     * 清除用户缓存
+     *
+     * @param loginName
+     */
+    public void removeUserCache(String loginName) {
+        SimplePrincipalCollection principals = new SimplePrincipalCollection();
+        principals.add(loginName, super.getName());
+        super.clearCachedAuthorizationInfo(principals);
+        super.clearCachedAuthenticationInfo(principals);
     }
 
     public static void main(String[] args) {

@@ -19,5 +19,7 @@
 	
 	<import resource="applicationContext-service.xml"/>
 
+	<import resource="spring-shiro-web.xml"/>
+
 	
 </beans>

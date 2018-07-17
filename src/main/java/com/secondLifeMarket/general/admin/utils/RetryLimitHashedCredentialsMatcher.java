@@ -1,12 +1,15 @@
 package com.secondLifeMarket.general.admin.utils;
 
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
+import org.springframework.beans.factory.InitializingBean;
 
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -17,12 +20,30 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Date: Created in 15:56 2018/5/8
  * @Modified By ：
  */
-public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
+public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher implements InitializingBean {
+
+    private final static Logger logger = LogManager.getLogger(RetryLimitHashedCredentialsMatcher.class);
+
+    private final static String DEFAULT_CHACHE_NAME = "retryLimitCache";
+
+    private final CacheManager cacheManager;
+
     // 声明一个缓存接口，这个接口是Shiro缓存管理的一部分，它的具体实现可以通过外部容器注入
     private Cache<String, AtomicInteger> passwordRetryCache;
 
+    private String retryLimitCacheName;
+
     public RetryLimitHashedCredentialsMatcher(CacheManager cacheManager) {
-        passwordRetryCache = cacheManager.getCache("passwordRetryCache");
+        this.cacheManager = cacheManager;
+        this.retryLimitCacheName = DEFAULT_CHACHE_NAME;
+    }
+
+    public String getRetryLimitCacheName() {
+        return retryLimitCacheName;
+    }
+
+    public void setRetryLimitCacheName(String retryLimitCacheName) {
+        this.retryLimitCacheName = retryLimitCacheName;
     }
 
     @Override
@@ -43,4 +64,10 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         }
         return match;
     }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.passwordRetryCache = cacheManager.getCache(retryLimitCacheName);
+    }
+
 }
