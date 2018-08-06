@@ -15,6 +15,11 @@ public class SelectSort {
         int[] a = {0,23,89,56,33,11};
         selectSort(a);
         System.out.println(JSON.toJSONString(a));
+
+        String aa = new String("1312313");
+        sort(aa);
+        System.out.println(aa);
+
     }
 
     //选择排序
@@ -33,5 +38,12 @@ public class SelectSort {
             a[i] = key;
         }
     }
+
+    private static void sort(String promter){
+
+        promter = promter + "sdjhgsdjkfhsdkj";
+
+    }
+
 
 }
