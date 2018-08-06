@@ -1,6 +1,8 @@
 import com.thread.test.NewThreadExtendsThread;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -41,18 +43,20 @@ public class Test {
 //				}
 //			});
 //		}
+		List<String> list = new ArrayList<String>();
 		HashMap<String, String> map = new HashMap<String, String>();
-		for(int i = 0; i<100; i++){
-//          map.entrySet();
-//          map.keySet();
-//          map.values();
+		for(int i = 0; i<10; i++){
 			map.put(String.valueOf(i), String.valueOf(i));
 		}
 		for(String key:map.keySet()){
 			System.out.println(key+"**"+map.get(key));
 		}
+		for(String value:map.values()){
+			System.out.println(value);
+		}
+
+
 	}
-//
 	}
 
 
