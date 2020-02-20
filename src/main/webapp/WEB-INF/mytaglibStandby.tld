@@ -8,7 +8,7 @@
 <uri>/mytaglibStandby</uri>
 <tag>
     <name>showLanguage</name>
-    <tag-class>com.eigpay.supp.general.admin.util.LanguageTagStandby</tag-class>
+    <tag-class>com.***.supp.general.admin.util.LanguageTagStandby</tag-class>
     <body-content>empty</body-content>
     <attribute>
         <name>flag</name>
