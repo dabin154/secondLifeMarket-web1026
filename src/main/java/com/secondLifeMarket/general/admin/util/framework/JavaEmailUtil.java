@@ -93,14 +93,5 @@ public class JavaEmailUtil {
         logger.info(rands);
         return rands;  
     }  
-    
-    public static void main(String[] args) {
-        JavaEmailUtil email = new JavaEmailUtil();
-        //参数分别为  "指定邮件服务器"，"收件箱","发件箱","用户账号","密码","标题","内容"
-        //发件箱"用户账号"   不加"@xxx.com"
-        //发件箱"密码"   新浪邮箱直接用登录密码     其他邮箱请开通SMTP服务,用另提供的密码即可    (注:所有邮箱均需要开通SMTP服务,否则不能发送邮件)
-        email.send("smtp.sina.com", "xiaxianbin@eigpay.com", "secondlifemarket@sina.com",
-            "secondlifemarket@sina.com", "abc412592", "注册验证码", "请输入验证码：完成注册。<br/>787878");
-    }
 
 }
